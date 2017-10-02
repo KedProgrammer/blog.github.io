@@ -11,11 +11,7 @@ class App extends Component {
     super();
     this.state =  {
       data1: data,
-
-      orden: "asc"
-
       orden: "desc"
-
 
     }
   }
@@ -34,11 +30,7 @@ class App extends Component {
             <div className="votos">
               <img  src={arriba} className="image-fotos" onClick={() => this.votar(index,"up")} />
               <span>{posts.votes}</span>
-
-              <img className="image-fotos" onClick={() => this.disminuir(index)}  src={abajo}/>
-
               <img className="image-fotos" onClick={() => this.votar(index,"down")}  src={abajo}/>
-
 
 
             </div>
@@ -88,20 +80,12 @@ this.setState({
 
 }
 
-
- ascendente(array){
-
  ordenar(array){
-
 var votos = [];
 var aux = [];
 var length = array.length;
 for(var i = 0;i < length; i++){
 votos = this.sacar_votos(array);
-
-aux[i] = array[votos.indexOf(Math.min(...votos))];
-array.splice(votos.indexOf(Math.min(...votos)),1);
-
   if (this.state.orden === "asc"){
   aux[i] = array[votos.indexOf(Math.min(...votos))];
   array.splice(votos.indexOf(Math.min(...votos)),1);
@@ -111,10 +95,10 @@ array.splice(votos.indexOf(Math.min(...votos)),1);
     array.splice(votos.indexOf(Math.max(...votos)),1);
 
   }
-
 }
 return aux;
 }
+
 
 
 
@@ -124,7 +108,6 @@ var aux = [];
 var length = array.length;
 for(var i = 0;i<length;i++){
 aux[i] = array[i].votes
-
 
 }
 return aux
@@ -137,12 +120,11 @@ put_orden(orden){
     orden: orden === "asc" ? "asc" : "desc"
   });
 
- prueba
 
   this.actualizar(this.state.data1)
 }
-return aux
-}
+
+
 
 
 
