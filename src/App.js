@@ -120,11 +120,8 @@ put_orden(orden){
     orden: orden === "asc" ? "asc" : "desc"
   });
 
-
   this.actualizar(this.state.data1)
 }
-
-
 
 
 
