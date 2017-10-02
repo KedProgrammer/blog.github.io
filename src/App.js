@@ -10,7 +10,9 @@ class App extends Component {
   constructor(){
     super();
     this.state =  {
-      data1: data
+      data1: data,
+      orden: "desc"
+
     }
   }
 
@@ -20,13 +22,15 @@ class App extends Component {
   render() {
     return (
       <div className="main">
+      <button onClick={() => this.put_orden("asc")}>  Ascendente </button>
+      <button onClick={() => this.put_orden("desc")}> Descendente  </button>
         {this.state.data1.map((posts,index) =>
           <div className="sub">
             <div className="fotos"><img className="image-post" src={posts.post_image_url} /></div>
             <div className="votos">
-              <img  src={arriba} className="image-fotos" onClick={() => this.aumentar(index)} />
+              <img  src={arriba} className="image-fotos" onClick={() => this.votar(index,"up")} />
               <span>{posts.votes}</span>
-              <img className="image-fotos" onClick={() => this.disminuir(index)}  src={abajo}/>
+              <img className="image-fotos" onClick={() => this.votar(index,"down")}  src={abajo}/>
 
 
             </div>
@@ -45,39 +49,52 @@ class App extends Component {
 
 
 
-aumentar(index){
-   this.setState({
-    data1: this.state.data1.map((post,i) => {
+votar(index,orden){
+
+var posts = this.state.data1.map((post,i) => {
             if(index === i){
+              if (orden === "up"){
               post.votes  = post.votes + 1
+              } else if(orden === "down"){
+                post.votes  = post.votes - 1
+              }
             }
             return post
           })
-      });
 
-
-}
-
-disminuir(index){
-   this.setState({
-    data1: this.state.data1.map((post,i) => {
-            if(index === i){
-              post.votes  = post.votes - 1
-            }
-            return post
-          })
-      });
+this.actualizar(posts)
+  
 
 }
 
 
 
-descendente(array){
+actualizar(posts){
+
+this.setState({
+
+    data1: this.ordenar(posts)
+
+  });
+
+
+}
+
+ ordenar(array){
+var votos = [];
 var aux = [];
 var length = array.length;
 for(var i = 0;i < length; i++){
-aux[i] = Math.min(...array)
-array.splice(array.indexOf(Math.min(...array)),1);
+votos = this.sacar_votos(array);
+  if (this.state.orden === "asc"){
+  aux[i] = array[votos.indexOf(Math.min(...votos))];
+  array.splice(votos.indexOf(Math.min(...votos)),1);
+  } else if(this.state.orden === "desc"){
+
+    aux[i] = array[votos.indexOf(Math.max(...votos))];
+    array.splice(votos.indexOf(Math.max(...votos)),1);
+
+  }
 }
 return aux;
 }
@@ -85,27 +102,26 @@ return aux;
 
 
 
-Ascendente(array){
-  var aux = [];
-  var votes = [];
-  var length = array.length;
-  for(var i = 0;i < length; i++){
-  votes[i] = array[i].votes
-  }
 
-  for(var i = 0;i < length; i++){
-  aux[i] = Math.min(...votes)
-  array.splice(array.indexOf(Math.min(...votes)),1);
-  }
+sacar_votos(array){
+var aux = [];
+var length = array.length;
+for(var i = 0;i<length;i++){
+aux[i] = array[i].votes
 
-   for(var i = 0;i < length; i++){
-    if (array[i].votes === aux[i]){
-
-    }
-  }
+}
+return aux
+}
 
 
+put_orden(orden){
 
+  this.setState({
+    orden: orden === "asc" ? "asc" : "desc"
+  });
+
+
+  this.actualizar(this.state.data1)
 }
 
 
