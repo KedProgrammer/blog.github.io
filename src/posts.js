@@ -1,4 +1,4 @@
-const data = [
+const data =  [
     {
       id: 1,
       title: 'Manejo de dependencias en Ruby con Bundler',
@@ -6,7 +6,7 @@ const data = [
       url: 'http://blog.makeitreal.camp/manejo-de-dependencias-en-ruby-con-bundler/',
       votes: 42,
       writer_avatar_url: '//a.disquscdn.com/uploads/users/2864/1155/avatar92.jpg?1481303405',
-      post_image_url: 'http://vitrinasantioquia.co/wp-content/uploads/V2Banner1_VitrinasAntioquia_Londel.png',
+      post_image_url: 'http://blog.makeitreal.camp/assets/images/bg-images/bundler.jpg',
     },
     {
       id: 2,
@@ -15,7 +15,7 @@ const data = [
       url: 'http://blog.makeitreal.camp/descubre-si-make-it-real-es-para-ti/',
       votes: 43,
       writer_avatar_url: '//a.disquscdn.com/uploads/users/2864/1155/avatar92.jpg?1481303405',
-      post_image_url: 'http://blog.makeitreal.camp/images/bg-images/laptop-sublime.jpg',
+      post_image_url: 'http://blog.makeitreal.camp/assets/images/bg-images/laptop-sublime.jpg',
     },
     {
       id: 3,
@@ -24,7 +24,7 @@ const data = [
       url: 'http://blog.makeitreal.camp/que-es-codigo/',
       votes: 44,
       writer_avatar_url: '//a.disquscdn.com/uploads/users/2864/1155/avatar92.jpg?1481303405',
-      post_image_url: 'http://blog.makeitreal.camp/images/bg-images/code.jpg',
+      post_image_url: 'http://blog.makeitreal.camp/assets/images/bg-images/code.jpg',
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ const data = [
       url: 'http://blog.makeitreal.camp/aprende-desarrollo-web-gratis/',
       votes: 45,
       writer_avatar_url: '//a.disquscdn.com/uploads/users/2864/1155/avatar92.jpg?1481303405',
-      post_image_url: 'http://blog.makeitreal.camp/images/bg-images/aprende-desarrollo-web-bg.png',
+      post_image_url: 'http://blog.makeitreal.camp/assets/images/bg-images/aprende-desarrollo-web-bg.png',
     },
   ]
 

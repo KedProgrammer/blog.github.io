@@ -10,7 +10,8 @@ class App extends Component {
   constructor(){
     super();
     this.state =  {
-      data1: data
+      data1: data,
+      orden: "asc"
     }
   }
 
@@ -27,8 +28,6 @@ class App extends Component {
               <img  src={arriba} className="image-fotos" onClick={() => this.aumentar(index)} />
               <span>{posts.votes}</span>
               <img className="image-fotos" onClick={() => this.disminuir(index)}  src={abajo}/>
-
-
             </div>
             <div className="texto">
              <span className="titulo">{posts.title}</span>
@@ -72,12 +71,14 @@ disminuir(index){
 
 
 
-descendente(array){
+ ascendente(array){
+var votos = [];
 var aux = [];
 var length = array.length;
 for(var i = 0;i < length; i++){
-aux[i] = Math.min(...array)
-array.splice(array.indexOf(Math.min(...array)),1);
+votos = this.sacar_votos(array);
+aux[i] = array[votos.indexOf(Math.min(...votos))];
+array.splice(votos.indexOf(Math.min(...votos)),1);
 }
 return aux;
 }
@@ -85,30 +86,15 @@ return aux;
 
 
 
-Ascendente(array){
-  var aux = [];
-  var votes = [];
-  var length = array.length;
-  for(var i = 0;i < length; i++){
-  votes[i] = array[i].votes
-  }
-
-  for(var i = 0;i < length; i++){
-  aux[i] = Math.min(...votes)
-  array.splice(array.indexOf(Math.min(...votes)),1);
-  }
-
-   for(var i = 0;i < length; i++){
-    if (array[i].votes === aux[i]){
-
-    }
-  }
-
-
+sacar_votos(array){
+var aux = [];
+var length = array.length;
+for(var i = 0;i<length;i++){
+aux[i] = array[i].votes
 
 }
-
-
+return aux
+}
 
 
 
