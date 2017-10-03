@@ -56,30 +56,29 @@ class App extends Component {
 
 
 
-votar(index,orden){
-var posts = this.state.data1.map((post,i) => {
-            if(index === i){
-              if (orden === "up"){
-              post.votes  = post.votes + 1
-              } else if(orden === "down"){
-                post.votes  = post.votes - 1
+  votar(index,orden){
+  var posts = this.state.data1.map((post,i) => {
+              if(index === i){
+                if (orden === "up"){
+                post.votes  = post.votes + 1
+                } else if(orden === "down"){
+                  post.votes  = post.votes - 1
+                }
               }
-            }
-            return post
-          })
-
-this.actualizar(posts)
-}
+              return post
+            })
+  this.actualizar(posts)
+  }
 
 
 
-actualizar(posts){
-this.setState({
 
-    data1: this.ordenar(posts)
 
-  });
-}
+  actualizar(posts){
+  this.setState({
+      data1: this.ordenar(posts)
+    });
+  }
 
 
 
