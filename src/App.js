@@ -42,7 +42,9 @@ class App extends Component {
             <div className="texto">
               <a href={posts.url} className="url">{posts.title}</a>
               <span>{posts.description}</span>
+              <div className="image_container"><span className="autor">Escrito por: </span> <img className="autor_image" src={posts.writer_avatar_url} /> </div>
             </div>
+
 
           </div>
           )}
