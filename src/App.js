@@ -11,7 +11,7 @@ class App extends Component {
     super();
     this.state =  {
       data1: data,
-      orden: "desc"
+      orden: "asc"
 
     }
   }
@@ -20,10 +20,15 @@ class App extends Component {
 
 
   render() {
+
     return (
       <div className="main">
-      <button onClick={() => this.put_orden("asc")}>  Ascendente </button>
-      <button onClick={() => this.put_orden("desc")}> Descendente  </button>
+
+        <div className="buttons">
+          <span className="ordenar">Ordenar por: </span>
+          <button onClick={() => this.put_orden("asc")} className={this.state.orden === "asc" ? "relleno" : ""}>  Ascendente </button>
+          <button onClick={() => this.put_orden("desc")} className={this.state.orden === "desc" ? "relleno" : ""}> Descendente  </button>
+        </div>
         {this.state.data1.map((posts,index) =>
           <div className="sub">
             <div className="fotos"><img className="image-post" src={posts.post_image_url} /></div>
@@ -35,8 +40,8 @@ class App extends Component {
 
             </div>
             <div className="texto">
-             <span className="titulo">{posts.title}</span>
-            <span>{posts.description}</span>
+              <a href={posts.url} className="url">{posts.title}</a>
+              <span>{posts.description}</span>
             </div>
 
           </div>
