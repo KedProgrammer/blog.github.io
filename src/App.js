@@ -23,7 +23,6 @@ class App extends Component {
 
     return (
       <div className="main">
-
         <div className="buttons">
           <span className="ordenar">Ordenar por: </span>
           <button onClick={() => this.put_orden("asc")} className={this.state.orden === "asc" ? "relleno" : ""}>  Ascendente </button>
@@ -36,19 +35,14 @@ class App extends Component {
               <img  src={arriba} className="image-fotos" onClick={() => this.votar(index,"up")} />
               <span>{posts.votes}</span>
               <img className="image-fotos" onClick={() => this.votar(index,"down")}  src={abajo}/>
-
-
             </div>
             <div className="texto">
               <a href={posts.url} className="url">{posts.title}</a>
               <span>{posts.description}</span>
               <div className="image_container"><span className="autor">Escrito por: </span> <img className="autor_image" src={posts.writer_avatar_url} /> </div>
             </div>
-
-
           </div>
           )}
-     
       </div>
     )
   }
