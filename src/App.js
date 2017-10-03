@@ -57,7 +57,6 @@ class App extends Component {
 
 
 votar(index,orden){
-
 var posts = this.state.data1.map((post,i) => {
             if(index === i){
               if (orden === "up"){
@@ -70,93 +69,74 @@ var posts = this.state.data1.map((post,i) => {
           })
 
 this.actualizar(posts)
-  
-
 }
 
 
 
 actualizar(posts){
-
 this.setState({
 
     data1: this.ordenar(posts)
 
   });
-
-
 }
+
+
+
+
+
+
+
 
  ordenar(array){
-var votos = [];
-var aux = [];
-var length = array.length;
-for(var i = 0;i < length; i++){
-votos = this.sacar_votos(array);
-  if (this.state.orden === "asc"){
-  aux[i] = array[votos.indexOf(Math.min(...votos))];
-  array.splice(votos.indexOf(Math.min(...votos)),1);
-  } else if(this.state.orden === "desc"){
-
-    aux[i] = array[votos.indexOf(Math.max(...votos))];
-    array.splice(votos.indexOf(Math.max(...votos)),1);
-
+    var votos = [];
+    var aux = [];
+    var length = array.length;
+    for(var i = 0;i < length; i++){
+      votos = this.sacar_votos(array);
+      if (this.state.orden === "asc"){
+        aux[i] = array[votos.indexOf(Math.min(...votos))];
+        array.splice(votos.indexOf(Math.min(...votos)),1);
+      } else if(this.state.orden === "desc"){
+        aux[i] = array[votos.indexOf(Math.max(...votos))];
+        array.splice(votos.indexOf(Math.max(...votos)),1);
+      }
+    }
+  return aux;
   }
-}
-return aux;
-}
 
 
-actualizar1(posts,orden){
-
-this.setState({
-
-    data1: this.ordenar1(posts,orden)
-
-  });
 
 
-}
 
- ordenar1(array,orden){
-var votos = [];
-var aux = [];
-var length = array.length;
-for(var i = 0;i < length; i++){
-votos = this.sacar_votos(array);
-  if (orden === "asc"){
-  aux[i] = array[votos.indexOf(Math.min(...votos))];
-  array.splice(votos.indexOf(Math.min(...votos)),1);
-  } else if(orden === "desc"){
 
-    aux[i] = array[votos.indexOf(Math.max(...votos))];
-    array.splice(votos.indexOf(Math.max(...votos)),1);
 
+
+  actualizar1(posts,orden){
+    this.setState({
+        data1: this.ordenar1(posts,orden)
+      });
   }
-}
-return aux;
-}
 
 
-sacar_votos(array){
-var aux = [];
-var length = array.length;
-for(var i = 0;i<length;i++){
-aux[i] = array[i].votes
-
-}
-return aux
-}
 
 
-put_orden(orden){
-
-  this.setState({
-    orden: orden === "asc" ? "asc" : "desc"
-  });
-
-  this.actualizar1(this.state.data1,orden)
-}
+  ordenar1(array,orden){
+    var votos = [];
+    var aux = [];
+    var length = array.length;
+    for(var i = 0;i < length; i++){
+      votos = this.sacar_votos(array);
+      if (orden === "asc"){
+        aux[i] = array[votos.indexOf(Math.min(...votos))];
+        array.splice(votos.indexOf(Math.min(...votos)),1);
+      } else if(orden === "desc"){
+        aux[i] = array[votos.indexOf(Math.max(...votos))];
+        array.splice(votos.indexOf(Math.max(...votos)),1);
+      }
+    }
+    return aux;
+  }
 
 
 
@@ -164,6 +144,30 @@ put_orden(orden){
 
 
 
+
+
+  sacar_votos(array){
+    var aux = [];
+    var length = array.length;
+    for(var i = 0;i<length;i++){
+      aux[i] = array[i].votes
+    }
+    return aux
+  }
+
+
+
+
+
+
+
+
+  put_orden(orden){
+    this.setState({
+      orden: orden === "asc" ? "asc" : "desc"
+    });
+    this.actualizar1(this.state.data1,orden)
+  }
 }
 
 
